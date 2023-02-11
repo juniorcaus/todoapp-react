@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
 
+
 function App() {
+
+  function handleAddTodo(event) {
+    console.log('click');
+  }
+
+  function handleChangeName(event) {
+    console.log(event.target.value);
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="controls" >
+
+        <input type="text" onChange={handleChangeName} />
+
+        <button onClick={handleAddTodo} >Add Todo</button>
+        <button>Limpar completas</button>
+
+      </div>
+
+      <div className="todo-list-container"> 
+        Conteudo das tarefas
+      
+      </div>
+   
     </div>
   );
 }
