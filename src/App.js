@@ -1,14 +1,27 @@
+import { useState } from 'react';
 import './App.css';
+import TodoList from './TodoList';
 
 
 function App() {
 
+  const [todoList, setTodoList ] = useState([]);
+
+  const [name, setName] =useState('')
+
+
   function handleAddTodo(event) {
-    console.log('click');
+    
+    const copyTodoList = [...todoList];
+    copyTodoList.push(name);
+    setTodoList(copyTodoList);
+
+    console.log(todoList);
+    setName('')
   }
 
   function handleChangeName(event) {
-    console.log(event.target.value);
+   setName(event.target.value);
   }
 
 
@@ -16,7 +29,7 @@ function App() {
     <div className="container">
       <div className="controls" >
 
-        <input type="text" onChange={handleChangeName} />
+        <input value={name} type="text" onChange={handleChangeName} />
 
         <button onClick={handleAddTodo} >Add Todo</button>
         <button>Limpar completas</button>
@@ -24,8 +37,9 @@ function App() {
       </div>
 
       <div className="todo-list-container"> 
-        Conteudo das tarefas
-      
+  
+        <TodoList todoList={todoList} />
+
       </div>
    
     </div>
